@@ -1,0 +1,23 @@
+.contact-section {
+  position: relative;
+  background: url('/assets/carte.jpg') center center / cover no-repeat;
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+.contact-section .contact-overlay {
+  background: rgba(255, 255, 255, 0.531);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}

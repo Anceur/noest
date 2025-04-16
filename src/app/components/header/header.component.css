@@ -1,0 +1,100 @@
+/* Fixe le header */
+.wassel-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Top bar */
+.top-bar {
+  background-color: #e30613;
+  font-size: 0.95rem;
+}
+
+.top-bar a {
+  color: white;
+  text-decoration: none;
+}
+
+.top-bar a:hover {
+  text-decoration: underline;
+}
+
+.btn-login {
+  background-color: white;
+  color: #e30613;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 6px 16px;
+  border: none;
+}
+
+.btn-login:hover {
+  background-color: #f2f2f2;
+}
+
+.btn-suivre {
+  background-color: #e30613;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 6px 16px;
+  border: none;
+}
+
+.btn-suivre:hover {
+  background-color: #b0181b;
+}
+.wassel-header .navbar {
+  height: 90px;
+  padding-top: 0;
+  padding-bottom: 0;
+  position: relative; /* nécessaire pour positionner le logo en absolu */
+}
+
+.navbar-brand {
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.wassel-header .navbar {
+  overflow: visible;
+}
+.logo-wassel {
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.navbar-nav .nav-link {
+  font-weight: bold;
+  color: #000000;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  color: #e30613;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #e30613;
+  transition: width 0.3s;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}

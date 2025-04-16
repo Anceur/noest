@@ -1,0 +1,42 @@
+.tracking-section {
+  background: url('/assets/desktop.JPEG') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.tracking-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+.custom-btn {
+  border-color: red;
+  color: white;
+  font-weight: bold;
+  z-index: 1;
+  position: relative;
+}
+
+.custom-btn:hover {
+  background-color: red;
+  color: white;
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+.animate-slide-in {
+  animation: slideInRight 0.5s ease-out;
+}
