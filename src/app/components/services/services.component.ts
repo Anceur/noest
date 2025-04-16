@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-services',
@@ -9,8 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './services.component.html',
   styleUrl: './services.component.css'
 })
-
-export class ServicesComponent {
+export class ServicesComponent implements OnInit {
   services = [
     {
       title: "Livraison à domicile",
@@ -34,12 +32,12 @@ export class ServicesComponent {
     },
     {
       title: "Échange",
-      description: "Noest Express assure la livraison des échanges en cas d’erreur dans la commande envoyée auparavant",
+      description: "Noest Express assure la livraison des échanges en cas d'erreur dans la commande envoyée auparavant",
       icon: "fas fa-right-left"
     },
     {
       title: "Pick up",
-      description: "Assurer l’acheminement d’un colis du point A au point B avec possibilité de paiement (achat)",
+      description: "Assurer l'acheminement d'un colis du point A au point B avec possibilité de paiement (achat)",
       icon: "fas fa-location-arrow"
     },
     {
@@ -52,7 +50,30 @@ export class ServicesComponent {
       description: "Nous mettons à votre écoute un service clientèle disponible 6/7 jours de 8 h 30 à 16 h 30.",
       icon: "fas fa-headset"
     }
-
   ];
+
+  constructor() { }
+
+  ngOnInit() {
+    this.checkScroll();
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    this.checkScroll();
+  }
+
+  checkScroll() {
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach((element) => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementBottom = element.getBoundingClientRect().bottom;
+      const isVisible = (elementTop < window.innerHeight) && (elementBottom >= 0);
+      
+      if (isVisible) {
+        element.classList.add('visible');
+      }
+    });
+  }
 }
 

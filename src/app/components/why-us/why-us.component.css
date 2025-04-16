@@ -1,32 +1,66 @@
 .animated-card {
   position: relative;
   height: 350px;
+  width: 336px;
   border-radius: 15px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin: 0 auto;
 }
 
 .animated-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.animated-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.animated-card:hover::before {
+  opacity: 1;
 }
 
 .overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   color: white;
-  transition: background 0.3s ease;
+  transition: all 0.5s ease;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.animated-card:hover .overlay {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .overlay h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  margin-bottom: 0.5rem;
+  transform: translateY(20px);
+  transition: transform 0.5s ease;
+}
+
+.animated-card:hover .overlay h3 {
+  transform: translateY(0);
 }
 
 .overlay p {
@@ -34,6 +68,7 @@
   font-size: 1rem;
   line-height: 1.4;
 }
+
 @keyframes slideInLeft {
   from {
     transform: translateX(-100px);
@@ -47,5 +82,52 @@
 
 .animate-slide-in {
   animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add a subtle pulse animation for the cards */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animated-card:hover {
+  animation: pulse 2s infinite;
+}
+
+/* Add a smooth fade-in animation for the title */
+h2.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.8s ease;
+}
+
+h2.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Update the column width to accommodate the fixed card width */
+.col-md-4 {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
 }
 

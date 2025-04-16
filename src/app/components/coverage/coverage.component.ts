@@ -10,10 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class CoverageComponent implements AfterViewInit {
   selectedWilaya: string | null = null;
-
+  showInfo: boolean = false;
+  infoPosition = { x: 0, y: 0 };
 
   @ViewChild('svgObject', { static: false }) svgObjectRef!: ElementRef;
-
 
   constructor(private zone: NgZone) {}
   wilayaNames: { [key: string]: string } = {
@@ -77,9 +77,6 @@ export class CoverageComponent implements AfterViewInit {
     "DZ58": "In Guezzam"
   };
 
-
-
-
   selectedPath: Element | null = null;
 
   ngAfterViewInit(): void {
@@ -96,45 +93,49 @@ export class CoverageComponent implements AfterViewInit {
       paths.forEach((path: Element) => {
         (path as HTMLElement).style.cursor = 'pointer';
 
-        // Applique la couleur rouge par défaut
+        // Set default color
         (path as SVGPathElement).setAttribute('fill', '#b0181b');
 
+        // Mouse enter event
+        path.addEventListener('mouseenter', (event) => {
+          const wilayaId = path.id;
+          const wilayaName = this.wilayaNames[wilayaId] || 'Wilaya inconnue';
+          
+          this.zone.run(() => {
+            this.selectedWilaya = wilayaName;
+            this.showInfo = true;
+            
+            // Position the info box near the cursor
+            const rect = (event.target as SVGGraphicsElement).getBoundingClientRect();
+            this.infoPosition = {
+              x: rect.left + window.scrollX,
+              y: rect.top + window.scrollY - 150
+            };
+
+            // Highlight the path
+            (path as SVGPathElement).setAttribute('fill', '#8a1313');
+          });
+        });
+
+        // Mouse leave event
+        path.addEventListener('mouseleave', () => {
+          this.zone.run(() => {
+            this.showInfo = false;
+            (path as SVGPathElement).setAttribute('fill', '#b0181b');
+          });
+        });
+
+        // Click event
         path.addEventListener('click', () => {
           const wilayaId = path.id;
           const wilayaName = this.wilayaNames[wilayaId] || 'Wilaya inconnue';
 
           this.zone.run(() => {
             this.selectedWilaya = wilayaName;
-            if (this.selectedPath && this.selectedPath !== path) {
-              (this.selectedPath as SVGPathElement).setAttribute('fill', '#b0181b');
-            }
-            (path as SVGPathElement).setAttribute('fill', '#8a1313');
-            this.selectedPath = path;
-            const oldText = svgDoc.getElementById('wilayaLabel');
-            if (oldText) {
-              oldText.remove();
-            }
-            const bbox = (path as SVGGraphicsElement).getBBox();
-            const text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text.setAttribute('id', 'wilayaLabel');
-            text.setAttribute('x', `${bbox.x + bbox.width / 2}`);
-            text.setAttribute('y', `${bbox.y + bbox.height / 2}`);
-            text.setAttribute('text-anchor', 'middle');
-            text.setAttribute('fill', 'white');
-            text.setAttribute('font-size', '16');
-            text.setAttribute('font-weight', 'bold');
-            text.textContent = wilayaName;
-
-            svgDoc.querySelector('svg')?.appendChild(text);
+            this.showInfo = true;
           });
         });
       });
     });
   }
-
-
-
-
-
-
 }

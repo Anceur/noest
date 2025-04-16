@@ -1,20 +1,23 @@
-<section class="section services p-0 ">
+<section class="section services p-0">
   <div class="content">
-    <h1 class="text-3xl fw-bold text-center mb-4 slide-in-right " style="color: #b0181b;">NOTRE SERVICES</h1>
-    <p class="text-center mb-5 fs-5 slide-in-right">
-      Gagnez du temps et de l’efficacité avec Wassali Express : nous prenons en charge tous les services logistiques pour vous laisser libre de vous concentrer sur l’essentiel.
-    </p>
+    <div class="text-center mb-5">
+      <h1 class="text-3xl fw-bold scroll-animate" style="color: #b0181b;">NOTRE SERVICES</h1>
+      <p class="text-center mb-5 fs-5 scroll-animate mt-3">
+        Gagnez du temps et de l'efficacité avec Wassali Express : nous prenons en charge tous les services logistiques pour vous laisser libre de vous concentrer sur l'essentiel.
+      </p>
+    </div>
 
-    <div class="row">
-      <div class="col-12 col-md-6 mb-4 slide-in-right " *ngFor="let service of services">
-        <div class="service-card p-4 shadow-sm rounded bg-white d-flex align-items-start gap-3 h-100">
-          <div class="service-icon flex-shrink-0">
-            <i [class]="service.icon + ' fa-2x text-danger'"></i>
-          </div>
-          <div>
-            <h4 class="font-normal mb-1 text-dark" >{{ service.title }}</h4>
-            <p class="mt-3" style="font-size: 1rem;">{{ service.description }}</p>
-
+    <div class="row g-4">
+      <div class="col-12 col-md-6 scroll-animate" *ngFor="let service of services">
+        <div class="service-card p-4 h-100">
+          <div class="d-flex align-items-start gap-4">
+            <div class="service-icon">
+              <i [class]="service.icon + ' fa-2x'"></i>
+            </div>
+            <div class="service-content">
+              <h4 class="font-normal mb-2">{{ service.title }}</h4>
+              <p class="text-muted mb-0" style="font-size: 1rem; line-height: 1.6;">{{ service.description }}</p>
+            </div>
           </div>
         </div>
       </div>

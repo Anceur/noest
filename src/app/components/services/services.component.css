@@ -1,44 +1,152 @@
 .content {
   padding: 6rem;
+  position: relative;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .content {
     padding: 2rem 1rem;
   }
-
-  .services .service-card {
-    padding: 1.5rem;
-  }
 }
 
 .service-card {
-  border-radius: 12px;
+  border-radius: 15px;
   background-color: white;
-  transition: transform 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(176, 24, 27, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover::before {
+  opacity: 1;
 }
 
 .service-icon {
-  width: 40px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(176, 24, 27, 0.1);
+  border-radius: 12px;
+  transition: all 0.4s ease;
 }
 
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+  background: rgba(176, 24, 27, 0.2);
+}
+
+.service-icon i {
+  color: #b0181b;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-icon i {
+  transform: scale(1.1);
+}
+
+h4 {
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover h4 {
+  color: #b0181b;
+}
+
+/* Animation Classes */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
 @keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
+
+/* Staggered Animation */
+.col-12.col-md-6:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.col-12.col-md-6:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.col-12.col-md-6:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.col-12.col-md-6:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* Title Animation */
+h1 {
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: #b0181b;
+  transition: width 0.4s ease;
+}
+
+h1:hover::after {
+  width: 80%;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+  .service-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
   .service-icon i {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .service-card {
+    padding: 1.5rem;
   }
 }
+
 @keyframes slideInLeft {
   from {
     transform: translateX(-100px);
