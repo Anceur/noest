@@ -1,185 +1,71 @@
 .hero-banner {
   height: 700px;
   padding: 3rem 1rem 3rem 1rem;
-  padding-right: 0;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
-.hero-banner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  /* background: url('assets/Frame 1.png') center center / cover no-repeat; */
-  opacity: 1;
-  z-index: 1;
-}
-
-.hero-banner .container {
-  position: relative;
-  z-index: 2;
-  transform: translateX(-40px);
+.hero-banner h1, .hero-banner .lead {
+  margin: 0 auto;
+  max-width: 700px;
 }
 
 .hero-banner h1 {
   color: white;
   font-size: 2.5rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  animation: fadeDown 0.8s ease-out;
+  margin-bottom: 1rem;
+  animation: fadeDown 0.8s ease-out, slideLeft 1s ease-out;
 }
 
 .hero-banner .lead {
   font-size: 1.5rem;
-  max-width: 800px;
+  max-width: 650px;
   margin: 1.5rem auto 2rem;
-  animation: fadeDown 1s ease-out;
+  animation: fadeDown 1s ease-out, slideLeft 1s ease-out;
 }
 
-.cta-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid white;
-  border-radius: 30px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-  background: white;
-  color: #e30613;
-}
-
-.cta-follow-button {
-  position: absolute;
-  top: 50%;
-  right: 60px;
-  transform: translateY(-50%);
+.realtime-tracking-button {
   background-color: white;
   color: #e30613;
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 1.2rem;
-  text-decoration: none;
-  z-index: 3;
-  animation: bounceIn 0.9s ease-in-out;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.cta-follow-button:hover {
-  background-color: #e30613;
-  color: white;
-}
-
-/* Tracking buttons container */
-.tracking-buttons-container {
-  position: absolute;
-  top: 60%;
-  right: 150px;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 3;
-}
-
-/* Circle pulse button */
-.circle-pulse-button {
-  width: 120px;
-  height: 120px;
-  border: 4px solid #e30613;
-  background-color: transparent;
-  color: #e30613;
-  border-radius: 50%;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  font-weight: 700;
-  font-size: 1.2rem;
-  animation: fadeRightToLeft 0.8s ease-out forwards, pulse 1.8s infinite;
-  transition: all 0.3s ease;
-  margin-bottom: 30px;
-}
-
-.circle-pulse-text {
-  position: relative;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.circle-pulse-button:hover .circle-pulse-text {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-.circle-pulse-button::after {
-  content: 'Suivre';
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #e30613;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: top 0.4s ease;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.circle-pulse-button:hover::after {
-  top: 0;
-}
-
-/* Realtime tracking button */
-.realtime-tracking-button {
-  background-color: #e30613;
-  color: white;
+  border: 2px solid #e30613;
   padding: 10px 25px;
   border-radius: 30px;
   font-weight: 600;
   font-size: 1.2rem;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
   transition: all 0.3s ease;
-  animation: fadeIn 1s ease-out;
   white-space: nowrap;
+  display: inline-block;
+  margin-top: 20px;
 }
 
-.realtime-tracking-button:hover {
-  background-color: #c1050f;
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+.realtime-tracking-button {
+  background-color:#e30613;
+  color: white;
+  border: 2px solid #e30613;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: block;
+  margin: 20px auto 0;
+  animation: blink 2s infinite;
 }
 
-.space {
-  padding-top: 6rem;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
-.fade-down {
-  animation: fadeDown 0.8s ease-out;
-}
 
-.fade-right-to-left {
-  animation: fadeRightToLeft 1s ease-out;
-}
-
-/* Animations */
 @keyframes fadeDown {
   from {
     opacity: 0;
@@ -188,6 +74,17 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -202,136 +99,110 @@
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0 30px;
+  text-align: left;
 }
 
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: translate(100%, -50%);
-  }
-  60% {
-    opacity: 1;
-    transform: translate(-10px, -50%);
-  }
-  100% {
-    transform: translate(0, -50%);
-  }
+
+.text-container {
+  max-width: 80%;
+  text-align: center;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(227, 6, 19, 0.5);
-  }
-  70% {
-    transform: scale(1.08);
-    box-shadow: 0 0 0 20px rgba(227, 6, 19, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(227, 6, 19, 0);
-  }
+.image-container {
+  max-width: 40%;
 }
 
-/* Responsive styles */
+.image-container img {
+  max-height: 500px;
+  object-fit: cover;
+  width: 100%;
+  margin-top: 10px;
+}
+
 @media (max-width: 1024px) {
-  .tracking-buttons-container {
-    right: 100px;
+  .hero-banner h1 {
+    font-size: 1.5rem;
   }
-  
-  .circle-pulse-button {
-    width: 100px;
-    height: 100px;
-    font-size: 1rem;
-    margin-bottom: 25px;
-  }
-  
-  .circle-pulse-button::after {
+
+  .hero-banner .lead {
     font-size: 1rem;
   }
-  
-  .realtime-tracking-button {
-    font-size: 1rem;
-    padding: 8px 20px;
+
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .image-container img {
+    max-height: 350px;
   }
 }
 
 @media (max-width: 768px) {
   .hero-banner {
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 4rem;
-    height: auto;
+    height: 500px;
+    padding: 3rem 0rem 0rem 0rem;
   }
-  
   .hero-banner h1 {
-    font-size: 1.5rem;
-    margin-top: 1rem;
+    font-size: 2rem;
   }
 
   .hero-banner .lead {
-    font-size: 0.95rem;
-    padding: 0 1rem;
+    font-size: 1rem;
   }
 
-  .hero-banner .container {
-    transform: none;
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .tracking-buttons-container {
-    top: auto;
-    bottom: 40px;
-    right: 20px;
-    transform: none;
+
+  .image-container img {
+    max-height: 300px;
+    margin-bottom: 10rem;
+    padding: 3rem 0rem 0rem 0rem;
   }
-  
-  .circle-pulse-button {
-    width: 80px;
-    height: 80px;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-  }
-  
-  .circle-pulse-button::after {
-    font-size: 0.9rem;
-  }
-  
+
   .realtime-tracking-button {
-    font-size: 0.9rem;
-    padding: 7px 15px;
+    font-size: 1rem;
+    padding: 8px 20px;
   }
-  
-  .cta-follow-button {
-    display: none;
+  .text-container {
+    max-width: 50%;
+    text-align: left;
+  }
+
+  .image-container {
+    max-width: 40%;
+    margin-left: 8px;
   }
 }
 
 @media (max-width: 480px) {
-  .tracking-buttons-container {
-    right: 10px;
-    bottom: 20px;
+  .hero-banner h1 {
+    font-size: 1.2rem;
   }
-  
-  .circle-pulse-button {
-    width: 70px;
-    height: 70px;
-    font-size: 0.8rem;
-    margin-bottom: 15px;
+
+  .hero-banner .lead {
+    font-size: 0.9rem;
   }
-  
-  .circle-pulse-button::after {
-    font-size: 0.8rem;
+
+  .hero-content {
+    flex-direction: row;
+    align-items: center;
   }
-  
+
+  .image-container img {
+    max-height: 250px;
+  }
+
   .realtime-tracking-button {
     font-size: 0.8rem;
     padding: 6px 12px;
