@@ -3,6 +3,10 @@
   background-size: cover;
   position: relative;
   overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
 }
 
 .tracking-section::before {
@@ -27,6 +31,10 @@
   transform: translateY(0);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  border-width: 2px;
+  border-radius: 0.5rem;
 }
 
 .custom-btn::before {
@@ -42,8 +50,9 @@
 }
 
 .custom-btn:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: #ff4444;
 }
 
 .custom-btn:hover::before {
@@ -78,15 +87,18 @@
 /* Text Animation */
 h1.animate-on-scroll {
   transform: translateY(50px);
+  animation: pulse 2s infinite;
 }
 
 p.animate-on-scroll {
   transform: translateY(30px);
+  animation: fadeInUp 1s ease-out;
 }
 
 /* Button Animation */
 .custom-btn.animate-on-scroll {
   transform: translateY(30px);
+  animation: bounce 2s infinite;
 }
 
 /* Hover Effects */
@@ -98,4 +110,63 @@ p.animate-on-scroll {
 .tracking-section:hover p {
   transform: translateY(-3px);
   transition: transform 0.4s ease;
+}
+
+/* Keyframe Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .tracking-section {
+    padding: 1rem;
+    min-height: 400px;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  p {
+    font-size: 1rem !important;
+  }
+
+  .custom-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .tracking-section {
+    min-height: 350px;
+  }
+
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  .custom-btn {
+    width: 100%;
+    text-align: center;
+  }
 }

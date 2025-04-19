@@ -1,40 +1,76 @@
-/* Fixe le header */
+/* Fixed header */
 .wassel-header {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 40px; /* Height of top bar */
+  left: 0;
+  right: 0;
   z-index: 999;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.wassel-header.top-hidden {
+  top: 0;
 }
 
 /* Top bar */
 .top-bar {
   background-color: #e30613;
   font-size: 0.95rem;
+  padding: 8px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  height: 40px;
 }
 
-.top-bar a {
+.top-bar.hidden {
+  transform: translateY(-100%);
+}
+
+/* Add margin to body to prevent content from hiding behind fixed header */
+body {
+  padding-top: 130px; /* Combined height of top bar and header */
+}
+
+.top-bar a, .top-bar span {
   color: white;
   text-decoration: none;
+  font-size: 14px;
 }
 
 .top-bar a:hover {
   text-decoration: underline;
 }
 
+.contact-info i {
+  margin-right: 8px;
+}
+
+/* Login button */
 .btn-login {
-  background-color: white;
-  color: #e30613;
+  background-color: #e30613;
+  color: white;
   font-weight: bold;
-  border-radius: 20px;
-  padding: 6px 16px;
-  border: none;
+  border-radius: 35px;
+  padding: 8px 24px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .btn-login:hover {
-  background-color: #f2f2f2;
+  background-color: white;
+  color: #e30613;
+  border-color: #e30613;
 }
 
+/* Track button */
 .btn-suivre {
   background-color: #e30613;
   color: white;
@@ -42,16 +78,20 @@
   border-radius: 20px;
   padding: 6px 16px;
   border: none;
+  transition: all 0.3s ease;
 }
 
 .btn-suivre:hover {
   background-color: #b0181b;
 }
+
+/* Navbar structure */
 .wassel-header .navbar {
   height: 90px;
   padding-top: 0;
   padding-bottom: 0;
-  position: relative; /* nécessaire pour positionner le logo en absolu */
+  position: relative;
+  overflow: visible;
 }
 
 .navbar-brand {
@@ -60,9 +100,7 @@
   display: flex;
   align-items: center;
 }
-.wassel-header .navbar {
-  overflow: visible;
-}
+
 .logo-wassel {
   height: 250px;
   position: absolute;
@@ -70,12 +108,13 @@
   transform: translateY(-50%);
 }
 
-
+/* Navigation links */
 .navbar-nav .nav-link {
   font-weight: bold;
   color: #000000;
   position: relative;
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .navbar-nav .nav-link.active,
@@ -97,4 +136,123 @@
 .navbar-nav .nav-link:hover::after,
 .navbar-nav .nav-link.active::after {
   width: 100%;
+}
+
+/* Custom animated hamburger menu */
+.custom-toggler {
+  border: none;
+  background: transparent;
+  padding: 10px;
+  transition: all 0.3s ease;
+  outline: none !important;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #e30613;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.menu-icon span:nth-child(1) {
+  top: 0px;
+}
+
+.menu-icon span:nth-child(2) {
+  top: 8px;
+}
+
+.menu-icon span:nth-child(3) {
+  top: 16px;
+}
+
+/* Animation for hamburger to X when expanded */
+.navbar-toggler[aria-expanded="true"] .menu-icon span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.navbar-toggler[aria-expanded="true"] .menu-icon span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.navbar-toggler[aria-expanded="true"] .menu-icon span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .navbar-collapse {
+    background-color: white;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 12px 0;
+  }
+  
+  .logo-wassel {
+    height: 120px;
+  }
+  
+  .wassel-header .navbar {
+    height: 70px;
+  }
+}
+
+/* For small mobile devices */
+@media (max-width: 575.98px) {
+  .top-bar {
+    display: none; /* Hide top bar on mobile */
+  }
+
+  .wassel-header {
+    position: fixed;
+    top: 0; /* Position header at top since top bar is hidden */
+  }
+
+  body {
+    padding-top: 70px; /* Reduced padding since we only need space for header */
+  }
+
+  .logo-wassel {
+    height: 80px;
+    position: relative;
+    transform: none;
+    top: 0;
+  }
+
+  .navbar-brand {
+    padding: 5px 0;
+  }
+
+  .wassel-header .navbar {
+    height: auto;
+    min-height: 60px;
+  }
 }

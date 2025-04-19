@@ -1,4 +1,5 @@
 <section class="hero-banner text-white py-5" style="background: url('assets/Frame 1.png') center center / cover no-repeat;">
+ 
   <ngb-carousel
     #carousel="ngbCarousel"
     (slide)="onSlideChange($event)"
@@ -28,7 +29,6 @@
         <p class="lead" [ngClass]="{'fade-right-to-left': activeSlideIndex === 1}">
           Votre partenaire de confiance pour toutes vos livraisons à domicile
         </p>
-
         <div class="space my-4"></div>
       </div>
     </ng-template>
@@ -45,8 +45,14 @@
     </ng-template>
   </ngb-carousel>
 
-  <a  href="https://suivi.ecotrack.dz/" class="circle-pulse-button">
-    <span class="circle-pulse-text">Suivre</span>
-  </a>
+  <div class="tracking-buttons-container">
+    <a href="https://suivi.ecotrack.dz/" class="circle-pulse-button">
+      <span class="circle-pulse-text">Suivre</span>
+    </a>
+    
+     <a href="https://suivi.ecotrack.dz/" class="realtime-tracking-button">
+      Suivi en Temps Réel
+    </a> 
+  </div>
 
 </section>

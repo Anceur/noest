@@ -1,18 +1,13 @@
-<div class="coverage-map-container">
+<div class="coverage-map-container">  
+  <object #svgObject type="image/svg+xml" data="assets/dz.svg" class="algeria-map"></object>
 
-  <object #svgObject type="image/svg+xml" data="assets/dz.svg" class="w-100"></object>
-
-  <div *ngIf="selectedWilaya" class="wilaya-info" [class.visible]="showInfo" [style.left.px]="infoPosition.x" [style.top.px]="infoPosition.y">
-    <h3>{{ selectedWilaya }}</h3>
-    <p>Zone de couverture active</p>
-    <div class="work-time">
-      <i class="fas fa-clock"></i>
-      <span>Lundi - Vendredi: 8h00 - 17h00</span>
-    </div>
-    <div class="work-time">
-      <i class="fas fa-clock"></i>
-      <span>Samedi: 8h00 - 12h00</span>
-    </div>
+  <div 
+    *ngIf="selectedWilaya" 
+    class="wilaya-info" 
+    [class.visible]="showInfo" 
+    [style.left.px]="infoPosition.x" 
+    [style.top.px]="infoPosition.y">
+    <div class="wilaya-name">{{ selectedWilaya.name }}</div>
+    <div class="wilaya-hours">{{ selectedWilaya.hours }}</div>
   </div>
 </div>
-

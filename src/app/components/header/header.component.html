@@ -1,6 +1,26 @@
+<!-- Top bar avec informations de contact -->
+<div class="top-bar py-2" [ngClass]="{'hidden': !showTopBar}">
+  <div class="container-fluid px-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="contact-info d-flex flex-wrap justify-content-center justify-content-md-start gap-2 gap-md-4">
+          <a href="mailto:contact@wasseliexpress.com" class="text-white text-decoration-none">
+            <i class="fas fa-envelope me-2"></i>contactwasseliexpress.com
+          </a>
+          <a href="tel:0654970662" class="text-white text-decoration-none">
+            <i class="fas fa-phone me-2"></i>06 54970662
+          </a>
+          <span class="text-white">
+            <i class="fas fa-clock me-2"></i>Du samedi au jeudi, de 9 h 00 à 18 h 00
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Navbar principale fixe -->
-<header class="wassel-header fixed-top">
+<header class="wassel-header" [ngClass]="{'top-hidden': !showTopBar}">
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
     <a class="navbar-brand" href="#">
       <img src="assets/logo.png" alt="Logo Wassel Express" class="logo-wassel" />
@@ -10,13 +30,14 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav gap-3">
-        <li class="nav-item "><a class="nav-link active" href="#">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="#presentation">Présentation</a></li>
-        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="#coverage">Couverture</a></li>
-        <li class="nav-item"><a class="nav-link" href="#offices">Localisation</a></li>
-        <li class="nav-item"><a class="nav-link" href="#conditions">Conditions</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link " [class.active]="isActive('home')" href="#">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" [class.active]="isActive('presentation')" href="#presentation">Présentation</a></li>
+        <li class="nav-item"><a class="nav-link" [class.active]="isActive('services')" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" [class.active]="isActive('coverage')" href="#coverage">Couverture</a></li>
+        <li class="nav-item"><a class="nav-link" [class.active]="isActive('contact')" href="#contact">Contact</a></li>
+        <div>
+          <a class="btn-login" href="http://wasseliexpress.ecotrack.dz" target="_blank">SE CONNECTER</a>
+        </div>
       </ul>
     </div>
   </nav>

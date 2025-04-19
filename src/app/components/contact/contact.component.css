@@ -1,13 +1,12 @@
-
 .contact-section {
   position: relative;
-  background: white;
+  background: url('/assets/carte.jpg') center center / cover no-repeat;
   padding: 5rem 0;
   overflow: hidden;
 }
 
 .contact-section .contact-overlay {
-  background: rgba(255, 255, 255, 0.531);
+  background: rgba(255, 255, 255, 0.85);
   top: 0;
   left: 0;
   z-index: 1;
@@ -23,3 +22,41 @@
   border-radius: 15px;
 }
 
+.form-control {
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  border-color: #b0181b;
+  box-shadow: 0 0 0 0.2rem rgba(176, 24, 27, 0.25);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+h1 {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: #b0181b;
+  transition: width 0.4s ease;
+}
+
+h1:hover::after {
+  width: 40%;
+}
