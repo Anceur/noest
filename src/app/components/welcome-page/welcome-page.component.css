@@ -1,70 +1,64 @@
-.hero-banner {
+
+ .hero-banner {
   height: 700px;
-  padding: 3rem 1rem 3rem 1rem;
+  padding: 5rem 1rem;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .hero-banner h1, .hero-banner .lead {
   margin: 0 auto;
   max-width: 700px;
+  color: white;
 }
 
 .hero-banner h1 {
-  color: white;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  animation: fadeDown 0.8s ease-out, slideLeft 1s ease-out;
+  text-transform: uppercase;
+  animation: fadeDown 1s ease-out, slideLeft 1s ease-out;
 }
 
 .hero-banner .lead {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   max-width: 650px;
-  margin: 1.5rem auto 2rem;
+  margin: 1.5rem auto;
+  font-weight: 300;
   animation: fadeDown 1s ease-out, slideLeft 1s ease-out;
 }
 
 .realtime-tracking-button {
-  background-color: white;
-  color: #e30613;
+  background-color: #e30613;
+  color: white;
   border: 2px solid #e30613;
-  padding: 10px 25px;
-  border-radius: 30px;
+  padding: 12px 30px;
+  border-radius: 40px;
   font-weight: 600;
   font-size: 1.2rem;
   text-decoration: none;
   box-shadow: none;
   transition: all 0.3s ease;
-  white-space: nowrap;
-  display: inline-block;
   margin-top: 20px;
 }
 
-.realtime-tracking-button {
-  background-color:#e30613;
-  color: white;
-  border: 2px solid #e30613;
-  padding: 10px 25px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 1.2rem;
-  text-decoration: none;
-  box-shadow: none;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  display: block;
-  margin: 20px auto 0;
-  animation: blink 2s infinite;
+.realtime-tracking-button:hover {
+  background-color: white;
+  color: #e30613;
+  transform: scale(1.1);
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+.zoom-effect {
+  transition: transform 0.3s ease-in-out;
 }
 
+.zoom-effect:hover {
+  transform: scale(1.1);
+}
 
 @keyframes fadeDown {
   from {
@@ -88,47 +82,47 @@
   }
 }
 
-@keyframes fadeRightToLeft {
-  from {
-    opacity: 0;
-    transform: translateX(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 .hero-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
+  gap: 30px;
   padding: 0 30px;
-  text-align: left;
+  text-align: center;
 }
 
-
 .text-container {
-  max-width: 80%;
-  text-align: center;
+  max-width: 60%;
 }
 
 .image-container {
   max-width: 40%;
 }
 
-.image-container img {
-  max-height: 500px;
+.hero-banner .image-container img {
+  max-height: 600px;
   object-fit: cover;
   width: 100%;
   margin-top: 10px;
+  animation: zoomBlink 3s ease-in-out infinite;
 }
+
+@keyframes zoomBlink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 @media (max-width: 1024px) {
   .hero-banner h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .hero-banner .lead {
@@ -149,8 +143,9 @@
 @media (max-width: 768px) {
   .hero-banner {
     height: 500px;
-    padding: 3rem 0rem 0rem 0rem;
+    padding: 3rem 0;
   }
+
   .hero-banner h1 {
     font-size: 2rem;
   }
@@ -160,43 +155,37 @@
   }
 
   .hero-content {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
 
   .image-container img {
     max-height: 300px;
-    margin-bottom: 10rem;
-    padding: 3rem 0rem 0rem 0rem;
+    width: auto;
+  }
+
+  .text-container {
+    max-width: 60%;
+    text-align: left;
   }
 
   .realtime-tracking-button {
     font-size: 1rem;
     padding: 8px 20px;
   }
-  .text-container {
-    max-width: 50%;
-    text-align: left;
-  }
-
-  .image-container {
-    max-width: 40%;
-    margin-left: 8px;
-  }
 }
+
+
 
 @media (max-width: 480px) {
   .hero-banner h1 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .hero-banner .lead {
     font-size: 0.9rem;
-  }
-
-  .hero-content {
-    flex-direction: row;
-    align-items: center;
   }
 
   .image-container img {
@@ -207,4 +196,7 @@
     font-size: 0.8rem;
     padding: 6px 12px;
   }
+}
+::ng-deep .carousel-indicators {
+  margin-bottom: -4rem !important;
 }

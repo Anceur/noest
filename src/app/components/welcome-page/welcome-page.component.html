@@ -1,88 +1,70 @@
 <section class="hero-banner text-white py-5" style="background: url('assets/bg.png') center center / cover no-repeat;">
-
-  <ngb-carousel
-    #carousel="ngbCarousel"
-    (slide)="onSlideChange($event)"
-    [interval]="5000"
-    [wrap]="true"
-    [keyboard]="true"
-    [pauseOnHover]="false"
-    [showNavigationArrows]="true"
-    [showNavigationIndicators]="true"
-  >
-
-  <ng-template ngbSlide id="0">
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        <div class="hero-content col-12 d-flex align-items-center justify-content-center">
-          <div class="text-container">
-            <h1 [ngClass]="{'fade-down': activeSlideIndex === 0}">
-              PLUS RAPIDE, PLUS SIMPLE
-            </h1>
-            <p class="lead" [ngClass]="{'fade-right-to-left': activeSlideIndex === 0}">
-              Accélérez vos livraisons et gagnez en sérénité grâce à Wasseli Express.
-            </p>
-            <a href="https://suivi.ecotrack.dz/" class="realtime-tracking-button mt-3 d-inline-block">
-              Suivi en Temps Réel
-            </a>
-
-          </div>
-          <div class="image-container text-center">
-            <img src="assets/hero1.png" alt="illustration" class="img-fluid" />
+  <ngb-carousel #carousel="ngbCarousel" (slide)="onSlideChange($event)" [interval]="5000" [wrap]="true" [keyboard]="true" [pauseOnHover]="false" [showNavigationArrows]="true" [showNavigationIndicators]="true">
+    <ng-template ngbSlide id="0">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="hero-content col-12 d-flex align-items-center justify-content-center">
+            <div class="text-container">
+              <h1 [ngClass]="{'fade-down': activeSlideIndex === 0}">
+                PLUS RAPIDE, PLUS SIMPLE
+              </h1>
+              <p class="lead" [ngClass]="{'fade-right-to-left': activeSlideIndex === 0}">
+                Accélérez vos livraisons et gagnez en sérénité grâce à Wasseli Express.
+              </p>
+              <a href="https://suivi.ecotrack.dz/" class="realtime-tracking-button mt-3 d-inline-block">
+                Suivi en Temps Réel
+              </a>
+            </div>
+            <div class="image-container">
+              <img src="assets/hero1.png" alt="illustration" class="img-fluid zoom-effect" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide id="1">
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        <div class="hero-content col-12 d-flex align-items-center justify-content-center">
-          <div class="text-container">
-            <h1 [ngClass]="{'fade-down': activeSlideIndex === 2}">
-              CONFIEZ-NOUS VOS LIVRAISONS
-            </h1>
-            <p class="lead" [ngClass]="{'fade-right-to-left': activeSlideIndex === 2}">
-              Du premier kilomètre au dernier, on s’occupe de tout. Rapide, fiable, local.
-            </p>
-            <a href="https://suivi.ecotrack.dz/" class="realtime-tracking-button mt-3 d-inline-block">
-              Suivi en Temps Réel
-            </a>
-
-          </div>
-          <div class="image-container">
-            <img src="assets/hero1.png" alt="illustration" class="img-fluid" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-
-  <ng-template ngbSlide id="2">
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        <div class="hero-content col-12 d-flex align-items-center justify-content-center">
-          <div class="text-container">
-            <h1 [ngClass]="{'fade-down': activeSlideIndex === 1}">
-              GAGNER VOTRE TEMPS
-            </h1>
-            <p class="lead" [ngClass]="{'fade-right-to-left': activeSlideIndex === 1}">
-              Des solutions intelligentes pour un transport plus fluide et fiable.
-            </p>
-            <a href="https://suivi.ecotrack.dz/" class="realtime-tracking-button mt-3 d-inline-block">
-              Suivi en Temps Réel
-            </a>
-          </div>
-          <div class="image-container">
-            <img src="assets/hero1.png" alt="illustration" class="img-fluid" />
+    </ng-template>
+    <ng-template ngbSlide id="1">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="hero-content col-12 d-flex align-items-center justify-content-center">
+            <div class="text-container">
+              <h1 [ngClass]="{'fade-down': activeSlideIndex === 1}">
+                CONFIEZ-NOUS VOS LIVRAISONS
+              </h1>
+              <p class="lead" [ngClass]="{'fade-right-to-left': activeSlideIndex === 1}">
+                Du premier kilomètre au dernier, on s’occupe de tout. Rapide, fiable, local.
+              </p>
+              <a href="https://suivi.ecotrack.dz/" class="realtime-tracking-button mt-3 d-inline-block">
+                Suivi en Temps Réel
+              </a>
+            </div>
+            <div class="image-container">
+              <img src="assets/hero1.png" alt="illustration" class="img-fluid zoom-effect" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-template>
-
-
-
+    </ng-template>
+    <ng-template ngbSlide id="2">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="hero-content col-12 d-flex align-items-center justify-content-center">
+            <div class="text-container">
+              <h1 [ngClass]="{'fade-down': activeSlideIndex === 2}">
+                GAGNER VOTRE TEMPS
+              </h1>
+              <p class="lead" [ngClass]="{'fade-right-to-left': activeSlideIndex === 2}">
+                Des solutions intelligentes pour un transport plus fluide et fiable.
+              </p>
+              <a href="https://suivi.ecotrack.dz/" class="realtime-tracking-button mt-3 d-inline-block">
+                Suivi en Temps Réel
+              </a>
+            </div>
+            <div class="image-container">
+              <img src="assets/hero1.png" alt="illustration" class="img-fluid zoom-effect" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </ngb-carousel>
-
 </section>
